@@ -12,6 +12,9 @@ set(TMXPARSER_VERSION_PATCH 0)
 
 set(TMXPARSER_VERSION "${TMXPARSER_VERSION_MAJOR}.${TMXPARSER_VERSION_MINOR}.${TMXPARSER_VERSION_PATCH}")
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# set(CMAKE_WARN_DEPRECATED OFF)
+
 message("Configuring tmxparser version ${VERSION}")
 
 configure_file(
@@ -103,9 +106,7 @@ target_include_directories(tmxparser PUBLIC
 target_compile_options(tmxparser
   PRIVATE -pedantic
   PRIVATE -Wall
-  PRIVATE -Werror=strict-prototypes
-  PRIVATE -Werror=old-style-definition
-  PRIVATE -Werror=missing-prototypes)
+  )
 if(NOT USE_MINIZ)
   target_compile_options(tmxparser
     PRIVATE -Werror)
